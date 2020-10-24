@@ -42,6 +42,10 @@ static void task_info_add_to_list(int pid)
 	struct task_info *ti;
 
 	/* TODO 1: Allocate task_info and add it to list */
+	//ti = (struct task_info *)kmalloc(sizeof(struct task_info), GFP_KERNEL);
+	
+	ti = task_info_alloc(pid);
+    list_add_tail(&ti->list, &head);
 }
 
 static void task_info_add_for_current(void)
@@ -66,12 +70,21 @@ static void task_info_print_list(const char *msg)
 	pr_info("]\n");
 }
 
+
 static void task_info_purge_list(void)
 {
 	struct list_head *p, *q;
 	struct task_info *ti;
 
+	//p = next, q = next->next
 	/* TODO 2: Iterate over the list and delete all elements */
+    list_for_each_safe(p, q, &head) 
+	{
+		list_del(p);
+		ti = list_entry(p, struct task_info, list);
+		kfree(ti);
+	}
+
 }
 
 static int list_init(void)
