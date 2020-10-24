@@ -1,0 +1,8 @@
+ccflags-y = -Wno-unused-function -Wno-unused-label -Wno-unused-variable
+
+# TODO: add rules to create a multi object module
+
+EXTRA_CFLAGS = -Wall -g
+
+obj-m = mod1.o mod2.o
+

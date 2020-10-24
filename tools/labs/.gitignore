@@ -8,5 +8,5 @@ disk2.img
 /*core-image-*.ext4
 .modinst
 /out/
-/tools/labs/mydisk.img
-/tools/labs/google-chrome-stable_current_amd64.deb
+mydisk.img
+google-chrome-stable_current_amd64.deb
